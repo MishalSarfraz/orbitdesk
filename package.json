@@ -1,0 +1,17 @@
+{
+  "name": "orbitdesk",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=@orbitdesk/api",
+    "dev:web": "npm run dev --workspace=@orbitdesk/web",
+    "build": "npm run build --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
