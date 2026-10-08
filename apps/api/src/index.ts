@@ -4,6 +4,10 @@ import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import Groq from "groq-sdk";
 import { pipeline } from "@xenova/transformers";
+import { pipeline, env } from "@xenova/transformers";
+
+// Tell Transformers to cache in /tmp because Vercel allows writes only in /tmp
+env.cacheDir = "/tmp/.cache";
 
 dotenv.config();
 
@@ -516,6 +520,11 @@ app.post("/api/billing/upgrade", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`⚡ OrbitDesk API running live on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`⚡ OrbitDesk API running live on http://localhost:${port}`);
+  });
+}
+
+// Export the Express app for Vercel Serverless
+export default app;
