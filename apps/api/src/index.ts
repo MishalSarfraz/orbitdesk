@@ -2,14 +2,13 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
-import Groq from "groq-sdk";
-import { pipeline } from "@xenova/transformers";
+import { Groq } from "groq-sdk";
 import { pipeline, env } from "@xenova/transformers";
 
-// Tell Transformers to cache in /tmp because Vercel allows writes only in /tmp
-env.cacheDir = "/tmp/.cache";
-
 dotenv.config();
+
+// Tell Transformers to cache in /tmp for Vercel Serverless
+env.cacheDir = "/tmp/.cache";
 
 const app = express();
 const port = process.env.PORT || 4000;
