@@ -46,6 +46,15 @@ function chunkText(text: string, chunkSize = 400, overlap = 80): string[] {
   return chunks;
 }
 
+// Root route so visiting the base URL returns status OK
+app.get("/", (req, res) => {
+  res.json({ status: "ok", service: "OrbitDesk API", message: "Server is healthy and running" });
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", service: "OrbitDesk API" });
+});
+
 // 2. Health check
 app.get("/health", (req, res) => {
   res.json({ status: "ok", service: "OrbitDesk API" });
