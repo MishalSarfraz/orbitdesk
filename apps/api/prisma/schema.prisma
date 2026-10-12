@@ -104,3 +104,9 @@ model Ticket {
   priority       String       @default("normal")
   createdAt      DateTime     @default(now())
 }
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+  binaryTargets   = ["native", "rhel-openssl-3.0.x"]
+}
