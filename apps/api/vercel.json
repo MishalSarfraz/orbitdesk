@@ -3,7 +3,14 @@
   "builds": [
     {
       "src": "src/index.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "node_modules/@xenova/**",
+          "node_modules/onnxruntime-node/**",
+          "prisma/**"
+        ]
+      }
     }
   ],
   "routes": [
