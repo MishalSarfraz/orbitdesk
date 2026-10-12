@@ -51,10 +51,6 @@ app.get("/", (req, res) => {
   res.json({ status: "ok", service: "OrbitDesk API", message: "Server is healthy and running" });
 });
 
-app.get("/health", (req, res) => {
-  res.json({ status: "ok", service: "OrbitDesk API" });
-});
-
 // 2. Health check
 app.get("/health", (req, res) => {
   res.json({ status: "ok", service: "OrbitDesk API" });
