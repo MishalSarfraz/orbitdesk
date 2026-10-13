@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./generated/client/index.js";
 import { Groq } from "groq-sdk";
 import { pipeline, env } from "@xenova/transformers";
 
